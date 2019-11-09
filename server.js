@@ -27,12 +27,11 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-var MONGODB_URI = process.env.MONGODB_URI | "mongodb://localhost/newsdb";
-mongoose.connect(MONGODB_URI);
-//mongoose.connect("mongodb://localhost/newsdb", {
-//useNewUrlParser: true
 
-//});
+mongoose.connect("mongodb://localhost/newsdb", {
+    useNewUrlParser: true
+
+});
 
 var routes = require("./controllers/articlesController");
 
