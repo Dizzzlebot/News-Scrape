@@ -88,7 +88,7 @@ router.get("/scrape", function (req, res) {
             // then save the values for any "href" attributes that the child elements may have
             result.link = $(element).children("a").attr("href");
 
-            result.image = $(element).find("a").find("img").attr("src");
+            result.img = $(element).find("img").attr("src");
 
 
             // Save these results in an object that we'll push into the results array we defined earlier
