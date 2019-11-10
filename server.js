@@ -27,7 +27,7 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsdb";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:anamco$4@ds153392.mlab.com:53392/heroku_z382m8fq";
 mongoose.connect(MONGODB_URI);
 //mongoose.connect("mongodb://localhost/newsdb", {
 // useNewUrlParser: true
