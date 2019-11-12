@@ -58,8 +58,8 @@ router.get("/all", function (req, res) {
         }
         // If there are no errors, send the data to the browser as json
         else {
-            console.log(found);
-            res.json(found);
+            console.log(found)
+            res.json(found)
         }
     });
 });
