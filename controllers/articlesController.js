@@ -99,7 +99,7 @@ router.get("/scrape", function (req, res) {
         console.log(results);
         db.Article.create(results, function (err, result) {
             if (err) console.log(err);
-            res.send("Scrape Complete");
+            res.redirect("/");
 
         });
     });
