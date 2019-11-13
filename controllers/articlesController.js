@@ -68,8 +68,17 @@ router.get("/all", function (req, res) {
 });
 
 router.post("/notes", function (req, res) {
-    db.Notes.create(req.body).then(function (response) {
-      res.json(response);
+    db.Notes.create(req.body).then(function (dbnotes) {
+      res.json(dbnotes);
+    
+    })
+});
+
+
+
+router.get("/notes", function (req, res) {
+    db.Notes.create(req.body).then(function (dbnotes) {
+      res.json(dbnotes);
     })
 })
 
