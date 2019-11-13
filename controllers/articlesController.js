@@ -28,20 +28,23 @@ router.get("/", function (req, res) {
     });
 });
 
+router.post("/save/:id", function(req, res) {
+    db.Article.findOneAndUpdate({_id:req.params.id}, {$set: {issaved: true}}, {new: true}).then(function(dbresponse) {
+        res.status(200);
+    })
+})
 // Main route (simple Hello World Message)
 router.get("/saved", function (req, res) {
-    db.Article.find({}, null, {
-        sort: {
-            created: -1
+    db.Article.find({issaved: true}, function (error, found) {
+        // Throw any errors to the console
+        if (error) {
+            console.log(error);
         }
-    }, function (err, data) {
-        if (data.length === 0) {
-            res.render("placeholder", {
-                message: "There's nothing scraped yet. Please click \"Scrape For Newest Articles\" for fresh and delicious news."
-            });
-        } else {
+        // If there are no errors, send the data to the browser as json
+        else {
+            console.log(found);
             res.render("index", {
-                articles: data
+                articles: found
             });
         }
     });
@@ -63,6 +66,12 @@ router.get("/all", function (req, res) {
         }
     });
 });
+
+router.post("/note", function (req, res) {
+    db.Notes.create(req.body).then(function (response) {
+      res.json(response);
+    })
+})
 
 // Scrape data from one site and place it into the mongodb db
 router.get("/scrape", function (req, res) {
