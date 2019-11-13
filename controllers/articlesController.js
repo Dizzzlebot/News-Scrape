@@ -67,7 +67,7 @@ router.get("/all", function (req, res) {
     });
 });
 
-router.post("/note", function (req, res) {
+router.post("/notes", function (req, res) {
     db.Notes.create(req.body).then(function (response) {
       res.json(response);
     })
